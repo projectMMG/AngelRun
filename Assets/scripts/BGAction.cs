@@ -3,20 +3,28 @@ using System.Collections;
 
 public class BGAction : MonoBehaviour {
 	public float scrlSpeed = 0;
+	//float oneSec = 0;
 
 	// Use this for initialization
 	void Start () {
+		rigidbody2D.velocity = new Vector2(-scrlSpeed,0);
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(-0.01f*scrlSpeed,0,0);
+		/*oneSec = Time.deltaTime;
 		
-		if(transform.localPosition.x < -20.0f)
+		if(oneSec > 0.1f)
 		{
-			transform.localPosition = new Vector3(20.0f,-0.5f,0);
+			transform.Translate(-0.1f*scrlSpeed,0,0);
+		}
+		*/
+		if(transform.position.x < -440.0f)
+		{
+			transform.position = new Vector2(0,0);
 		}
 	
 	}
+	
 }
