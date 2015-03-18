@@ -25,11 +25,11 @@ public class ObstacleGenrate : MonoBehaviour {
 		if(randSet == false)
 		{
 			genBuildingTime = Random.Range(0.0f,2.0f);
-			genBuildingType = Random.Range(0,1);
+			genBuildingType = Random.Range(0,1+1);
 			//ObstacleBuilding = GameObject.Find(buildingList[genBuildingType]);
 			
 			genEnemyTime = Random.Range(0.0f,2.0f);
-			genEnemyType = Random.Range(0,2);
+			genEnemyType = Random.Range(0,2+1);
 			//ObstacleEnemy = GameObject.Find(enemyList[genEnemyType]);
 			randSet = true;
 		}
