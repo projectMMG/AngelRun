@@ -2,21 +2,40 @@
 using System.Collections;
 
 public class ObstacleBuildingAction : MonoBehaviour {
-	public float scrlSpeed;
+	public float generateTime;
+	public GameObject[] ObstacleBuilding = new GameObject[3];
+	float timeTemp;
+	int genBuildingType;
+	bool randSet = false;
 
 	// Use this for initialization
 	void Start () {
-		//초기설정
-		transform.position = new Vector2(128.0f,5.1f);
-		rigidbody2D.velocity = new Vector2(-scrlSpeed,0);
+		//초기설정		
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(transform.position.x < 0.0f)
+		if(randSet == false)
 		{
-			Destroy(gameObject);
+			//generateDelay = Random.Range(0.0f,1.0f);
+			genBuildingType = Random.Range(0,2+1);
+			randSet = true;
+		}
+		
+		timeTemp += Time.deltaTime;
+		
+		if(generateTime < timeTemp)
+		{
+			//생성
+			Instantiate(ObstacleBuilding[genBuildingType]);
+			timeTemp = 0;
+			randSet = false;
 		}
 	}
+	/*
+	void OnTriggerEnter2D(Collider2D Obstacle){
+		Destroy(Obstacle.gameObject);
+	}
+	*/
 }

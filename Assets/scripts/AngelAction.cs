@@ -53,7 +53,7 @@ public class AngelAction : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D Obstacle){
-		if(dmgTaken == false)
+		if(Obstacle.tag != "Cloud" && dmgTaken == false)
 		{
 			Debug.Log ("dmgTaken = True");
 			dmgTaken = true;
