@@ -7,6 +7,7 @@ public class HouseAction : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//초기설정
+		transform.parent = GameObject.Find("02_BuildingList").transform;
 		transform.position = new Vector2(128.0f,5.1f);
 		rigidbody2D.velocity = new Vector2(-scrlSpeed,0);
 	

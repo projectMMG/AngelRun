@@ -33,9 +33,9 @@ public class ObstacleBuildingAction : MonoBehaviour {
 			randSet = false;
 		}
 	}
-	/*
+	
 	void OnTriggerEnter2D(Collider2D Obstacle){
 		Destroy(Obstacle.gameObject);
 	}
-	*/
+	
 }
