@@ -15,7 +15,7 @@ public class AngelAction : MonoBehaviour {
 		//this.ScrHeightRatio = Screen.height/720.0f;
 		
 		//초기설정
-		transform.position = new Vector2(51.2f, 36.0f);
+		transform.position = new Vector2(41.2f, 31.0f);
 	}
 	
 	// Update is called once per frame
@@ -40,7 +40,6 @@ public class AngelAction : MonoBehaviour {
 		{
 			if(dmgTime >= 1.0f)
 			{
-				Debug.Log(dmgTime + " / dmgTaken = False");
 				dmgTaken = false;
 				dmgTime = 0.0f;
 			}
@@ -55,7 +54,6 @@ public class AngelAction : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D Obstacle){
 		if(Obstacle.tag != "Cloud" && dmgTaken == false)
 		{
-			Debug.Log ("dmgTaken = True");
 			dmgTaken = true;
 			transform.position = new Vector2(transform.position.x - 12.8f, transform.position.y);
 		}

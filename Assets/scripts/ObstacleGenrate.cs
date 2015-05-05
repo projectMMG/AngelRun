@@ -2,45 +2,106 @@
 using System.Collections;
 
 public class ObstacleGenrate : MonoBehaviour {
+	//***************************
+	//빌딩 프리팹 0-빌딩 1-집 2-구름
+	//***************************
 	public GameObject[] ObstacleBuilding = new GameObject[2];
-	public GameObject[] ObstacleEnemy = new GameObject[3];
-	public float genBuildingTime, startBuildingTime;
 	
-	float delayTemp = 0;
+	//*********************************
+	//적 프리팹 0-헬리콥터 1-비행기 2-탱크
+	//*********************************
+	public GameObject[] ObstacleEnemy = new GameObject[3];
+	
+	public float genTimeBuilding, startTimeBuilding, regenMaxDelayBuilding, regenMinDelayBuilding, regenMaxDelayEnemy, regenMinDelayEnemy;
+	//float delayTemp = 0;
 	int genBuildingType, genEnemyType;
-	bool randSet = false;
-
+	
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("fGenBuilding",startBuildingTime,genBuildingTime);
+		//반복 실행
+		InvokeRepeating("fGenBuilding",startTimeBuilding,genTimeBuilding);
+		
+		//적 랜덤생성
+		fGenEnemy();
 	}
 		
 	//충돌 시 동작
 	void OnTriggerEnter2D(Collider2D Obstacle){
-		Destroy(Obstacle.gameObject);
+	
+		if(Obstacle.transform.name == "Angel01")
+		{
+			Time.timeScale = 0;
+		}
+		else
+		{
+			Destroy(Obstacle.gameObject);
+		}
+		
 		
 		//건물 장애물들의 재생성
-		StartCoroutine(fRegenBuilding());
+		if(Obstacle.transform.parent.name == "00_Cloud" || 
+		   Obstacle.transform.parent.name == "02_BuildingList")
+		{
+			StartCoroutine(fRegenBuilding());
+		}
 		
-		//적 장애물들의 재생성
+		if(transform.position.z == 0)
+		{
+			//적 장애물들의 재생성
+			if(Obstacle.transform.parent.name == "01_EnemyList")
+			{
+				StartCoroutine(fRegenEnemy());
+				StartCoroutine(fRegenEnemy());
+			}
+		}
+		else
+		{
+			if(Obstacle.transform.parent.childCount == 1)
+			{
+				StartCoroutine(fRegenEnemy());
+			}
+		}
 	}
 	
-	//건물 생성 규칙
+	//*************************
+	//*****건물 생성 규칙*******
+	//*************************
 	void fGenBuilding()
 	{
 		//건물 장애물 생성
 		genBuildingType = Random.Range(0, 3);
-		GameObject BuildObj = (GameObject)Object.Instantiate(ObstacleBuilding[genBuildingType]);
-				
-		//차일드화
+		Instantiate(ObstacleBuilding[genBuildingType]);
 	}
 	
-	//건물 재생성 규칙
+	//***********************
+	//****건물 재생성 규칙****
+	//***********************
 	IEnumerator fRegenBuilding()
 	{
 		//건물 장애물 재생성 규칙
-		delayTemp = Random.Range(0.0f,1.1f);		
+		float delayTemp = Random.Range(regenMinDelayBuilding,regenMaxDelayBuilding);		
 		yield return new WaitForSeconds(delayTemp);
 		fGenBuilding();
+	}
+	
+	//*************************
+	//*******적 생성 규칙*******
+	//*************************
+	void fGenEnemy()
+	{
+		//적 장애물 생성
+		genEnemyType = Random.Range(0, 3);
+		Instantiate(ObstacleEnemy[genEnemyType]);
+	}
+	
+	//***********************
+	//*****적 재생성 규칙*****
+	//***********************
+	IEnumerator fRegenEnemy()
+	{
+		//적 장애물 재생성 규칙
+		float delayTemp = Random.Range(regenMinDelayEnemy,regenMaxDelayEnemy);		
+		yield return new WaitForSeconds(delayTemp);
+		fGenEnemy();
 	}
 }
