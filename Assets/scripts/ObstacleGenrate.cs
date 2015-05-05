@@ -13,6 +13,7 @@ public class ObstacleGenrate : MonoBehaviour {
 	public GameObject[] ObstacleEnemy = new GameObject[3];
 	
 	public float genTimeBuilding, startTimeBuilding, regenMaxDelayBuilding, regenMinDelayBuilding, regenMaxDelayEnemy, regenMinDelayEnemy;
+	
 	//float delayTemp = 0;
 	int genBuildingType, genEnemyType;
 	
@@ -32,11 +33,7 @@ public class ObstacleGenrate : MonoBehaviour {
 		{
 			Time.timeScale = 0;
 		}
-		else
-		{
-			Destroy(Obstacle.gameObject);
-		}
-		
+				
 		
 		//건물 장애물들의 재생성
 		if(Obstacle.transform.parent.name == "00_Cloud" || 
@@ -45,22 +42,24 @@ public class ObstacleGenrate : MonoBehaviour {
 			StartCoroutine(fRegenBuilding());
 		}
 		
-		if(transform.position.z == 0)
+		//적 장애물들의 재생성
+		if(Obstacle.transform.parent.name == "01_EnemyList")
 		{
-			//적 장애물들의 재생성
-			if(Obstacle.transform.parent.name == "01_EnemyList")
+			Debug.Log(Obstacle.transform.parent.childCount);
+			if(GameStatus.chkDmg() == false)
 			{
 				StartCoroutine(fRegenEnemy());
 				StartCoroutine(fRegenEnemy());
-			}
-		}
-		else
-		{
-			if(Obstacle.transform.parent.childCount == 1)
+				
+			} 
+			else if(Obstacle.transform.parent.childCount == 1)
 			{
 				StartCoroutine(fRegenEnemy());
+				GameStatus.regenStart();
 			}
 		}
+		
+		Destroy(Obstacle.gameObject);
 	}
 	
 	//*************************

@@ -56,6 +56,8 @@ public class AngelAction : MonoBehaviour {
 		{
 			dmgTaken = true;
 			transform.position = new Vector2(transform.position.x - 12.8f, transform.position.y);
+			
+			GameStatus.regenStop();
 		}
 	}
 	

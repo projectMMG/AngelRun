@@ -13,12 +13,12 @@ public class HelicopAction : MonoBehaviour {
 	void Start () {
 		//초기설정
 		transform.parent = GameObject.Find("01_EnemyList").transform;
-		//randPos = Random.Range(posMin, posMax); //randPos = Random.Range(5.1f, 46.0f);
-		transform.position = new Vector2(128.0f,5.1f);
-		rigidbody2D.velocity = new Vector2(-scrlSpd,0);
 		upChk = false;
 		lunchChk = false;
 		angel = GameObject.Find("Angel01");
+		//randPos = Random.Range(posMin, posMax); //randPos = Random.Range(5.1f, 46.0f);
+		transform.position = new Vector2(128.0f,5.1f);
+		rigidbody2D.velocity = new Vector2(-scrlSpd,0);
 	}
 	
 	void Update () {

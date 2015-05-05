@@ -12,11 +12,11 @@ public class PlaneAction : MonoBehaviour {
 	void Start () {
 		//초기설정
 		transform.parent = GameObject.Find("01_EnemyList").transform;
+		upDownChk = false;
+		angel = GameObject.Find("Angel01");
 		randPos = Random.Range(posMin, posMax); //randPos = Random.Range(5.1f, 46.0f);
 		transform.position = new Vector2(128.0f,randPos);
 		rigidbody2D.velocity = new Vector2(-scrlSpd,0);
-		upDownChk = false;
-		angel = GameObject.Find("Angel01");
 	}
 	
 	void Update () {
