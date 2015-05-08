@@ -16,6 +16,7 @@ public class AngelAction : MonoBehaviour {
 		
 		//초기설정
 		transform.position = new Vector2(41.2f, 31.0f);
+		
 	}
 	
 	// Update is called once per frame
@@ -48,7 +49,7 @@ public class AngelAction : MonoBehaviour {
 				dmgTime += Time.deltaTime;
 			}
 		}
-			
+		
 	}
 	
 	void OnTriggerEnter2D(Collider2D Obstacle){
