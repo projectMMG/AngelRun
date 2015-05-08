@@ -33,33 +33,42 @@ public class ObstacleGenrate : MonoBehaviour {
 		{
 			Time.timeScale = 0;
 		}
-				
-		
-		//건물 장애물들의 재생성
-		if(Obstacle.transform.parent.name == "00_Cloud" || 
-		   Obstacle.transform.parent.name == "02_BuildingList")
+		else
 		{
-			StartCoroutine(fRegenBuilding());
-		}
-		
-		//적 장애물들의 재생성
-		if(Obstacle.transform.parent.name == "01_EnemyList")
-		{
-			Debug.Log(Obstacle.transform.parent.childCount);
-			if(GameStatus.chkDmg() == false)
+			//건물 장애물들의 재생성
+			if(Obstacle.transform.parent.name == "00_Cloud" || 
+			   Obstacle.transform.parent.name == "02_BuildingList")
 			{
-				StartCoroutine(fRegenEnemy());
-				StartCoroutine(fRegenEnemy());
-				
-			} 
-			else if(Obstacle.transform.parent.childCount == 1)
-			{
-				StartCoroutine(fRegenEnemy());
-				GameStatus.regenStart();
+				StartCoroutine(fRegenBuilding());
+				if(Obstacle.transform.parent.name == "00_Cloud")
+				{
+					GameStatus.minusCloudCnt();
+				}
+				else
+				{
+					GameStatus.minusBuildingCnt();
+				}
 			}
+			
+			//적 장애물들의 재생성
+			if(Obstacle.transform.parent.name == "01_EnemyList")
+			{
+				if(GameStatus.chkDmg() == false)
+				{
+					StartCoroutine(fRegenEnemy());
+					StartCoroutine(fRegenEnemy());
+					
+				} 
+				else if(GameStatus.chkEnemyCnt() == 1)
+				{
+					StartCoroutine(fRegenEnemy());
+					GameStatus.regenStart();
+				}
+				GameStatus.minusEnemyCnt();
+			}
+			
+			Destroy(Obstacle.gameObject);
 		}
-		
-		Destroy(Obstacle.gameObject);
 	}
 	
 	//*************************
@@ -70,6 +79,14 @@ public class ObstacleGenrate : MonoBehaviour {
 		//건물 장애물 생성
 		genBuildingType = Random.Range(0, 3);
 		Instantiate(ObstacleBuilding[genBuildingType]);
+		if(genBuildingType == 2)
+		{
+			GameStatus.plusCloudCnt();
+		}
+		else
+		{
+			GameStatus.plusBuildingCnt();
+		}
 	}
 	
 	//***********************
@@ -91,6 +108,7 @@ public class ObstacleGenrate : MonoBehaviour {
 		//적 장애물 생성
 		genEnemyType = Random.Range(0, 3);
 		Instantiate(ObstacleEnemy[genEnemyType]);
+		GameStatus.plusEnemyCnt();
 	}
 	
 	//***********************

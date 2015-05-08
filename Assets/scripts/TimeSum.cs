@@ -12,7 +12,10 @@ public class TimeSum : MonoBehaviour {
 		if(pointSec >= 0.1f)
 		{
 			sumTime += pointSec;
-			guiText.text = sumTime.ToString("#.0");
+			guiText.text = "Time : " + sumTime.ToString("#.0")
+							+ "\nEnemy : " + GameStatus.chkEnemyCnt()
+							+ "\nBuilding : " + GameStatus.chkBuildingCnt()
+							+ "\nCloud : " + GameStatus.chkCloudCnt();
 			pointSec = 0;
 		}
 	}

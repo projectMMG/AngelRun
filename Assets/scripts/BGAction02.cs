@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BGAction : MonoBehaviour {
+public class BGAction02 : MonoBehaviour {
 	public float scrlSpeed = 0;
 	//float oneSec = 0;
-
+	
 	// Use this for initialization
 	void Start () {
 		rigidbody2D.velocity = new Vector2(-scrlSpeed,0);
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,6 @@ public class BGAction : MonoBehaviour {
 		{
 			transform.position = new Vector2(395,0);
 		}
-	
+		
 	}
-	
 }

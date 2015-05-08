@@ -46,5 +46,52 @@ public static class GameStatus{
 		
 	}
 	//게임재시작 멤버함수
+	
+	//오브젝트카운트 멤버함수
+	public static int chkEnemyCnt()
+	{
+		return cntEnemy;
+	}
+	
+	public static int chkCloudCnt()
+	{
+		return cntCloud;
+	}
+	
+	public static int chkBuildingCnt()
+	{
+		return cntBuilding;
+	}
+	
+	public static void plusEnemyCnt()
+	{
+		cntEnemy++;
+	}
+	
+	public static void minusEnemyCnt()
+	{
+		cntEnemy--;
+	}
+	
+	public static void plusCloudCnt()
+	{
+		cntCloud++;
+	}
+	
+	public static void minusCloudCnt()
+	{
+		cntCloud--;
+	}
+	
+	public static void plusBuildingCnt()
+	{
+		cntBuilding++;
+	}
+	
+	public static void minusBuildingCnt()
+	{
+		cntBuilding--;
+	}
+	//오브젝트카운트 멤버함수
 
 }
