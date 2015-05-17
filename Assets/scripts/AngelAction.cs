@@ -9,51 +9,94 @@ public class AngelAction : MonoBehaviour {
 	bool dmgTaken = false;
 	float dmgTime = 0;
 
+	
+	void init()
+	{
+		transform.position = new Vector2(41.2f, 31.0f);
+	}
+	
 	// Use this for initialization
 	void Start () {
 		//this.ScrWidthRatio = Screen.width/1280.0f;
 		//this.ScrHeightRatio = Screen.height/720.0f;
 		
 		//초기설정
-		transform.position = new Vector2(41.2f, 31.0f);
+		init ();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Input Check
-		if(Input.GetKey(KeyCode.UpArrow))
+		if(GameStatus.chkGameOver() == false &&
+		   GameStatus.chkGameStart() == true)
 		{
-			if(rigidbody2D.velocity.y < 0)
+			if(Input.GetKey(KeyCode.UpArrow))
 			{
-				velocityStop();
-			}
-			rigidbody2D.gravityScale = -angelGravity;
-		}
-		else
-		{
-			rigidbody2D.gravityScale = angelGravity;
-		}
-		velotest = rigidbody2D.velocity.y;
-		
-		//Damage Check
-		if(dmgTaken == true)
-		{
-			if(dmgTime >= 1.0f)
-			{
-				dmgTaken = false;
-				dmgTime = 0.0f;
+				if(rigidbody2D.velocity.y < 0)
+				{
+					velocityStop();
+				}
+				rigidbody2D.gravityScale = -angelGravity;
 			}
 			else
 			{
-				dmgTime += Time.deltaTime;
+				rigidbody2D.gravityScale = angelGravity;
 			}
+			velotest = rigidbody2D.velocity.y;
+			
+			//Damage Check
+			if(dmgTaken == true)
+			{
+				if(dmgTime >= 1.0f)
+				{
+					dmgTaken = false;
+					dmgTime = 0.0f;
+				}
+				else
+				{
+					dmgTime += Time.deltaTime;
+				}
+			}
+		}
+		else if(GameStatus.chkGameOver() == true)
+		{
+			rigidbody2D.gravityScale = 0;
+			
+			if(GameStatus.chkGameStart() == false)
+			{
+				if(transform.position.x < 41.2f)
+				{
+					rigidbody2D.velocity = new Vector2(40,0);
+				}
+				else
+				{
+					velocityStop();
+				}
+				
+				if(transform.position.y < 30.5f ||
+				   transform.position.y > 31.5f)
+				{
+					transform.position = new Vector2(transform.position.x, 31.0f);
+				}
+				
+				if(GameStatus.cntAllObstacle() == 0)
+				{
+					GameObject restartCall = GameObject.Find("01_GameObj");
+					restartCall.transform.FindChild("Obstacle").gameObject.SetActive(false);
+					
+					restartCall = GameObject.Find("03_SystemUI");
+					restartCall.transform.FindChild("gameOverSet").gameObject.SetActive(true);
+				}
+			}
+			
 		}
 		
 	}
 	
 	void OnTriggerEnter2D(Collider2D Obstacle){
-		if(Obstacle.tag != "Cloud" && dmgTaken == false)
+		if(GameStatus.chkGameOver() == false &&
+		   Obstacle.tag != "Cloud" && dmgTaken == false)
 		{
 			dmgTaken = true;
 			transform.position = new Vector2(transform.position.x - 12.8f, transform.position.y);

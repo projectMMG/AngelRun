@@ -17,13 +17,25 @@ public class ObstacleGenrate : MonoBehaviour {
 	//float delayTemp = 0;
 	int genBuildingType, genEnemyType;
 	
-	// Use this for initialization
-	void Start () {
+	void init()
+	{
 		//반복 실행
 		InvokeRepeating("fGenBuilding",startTimeBuilding,genTimeBuilding);
 		
 		//적 랜덤생성
 		fGenEnemy();
+	}
+	
+	// Use this for initialization
+	void OnEnable()
+	{
+		init ();
+	}
+	
+	void OnDisable()
+	{
+		StopAllCoroutines();
+		CancelInvoke();
 	}
 		
 	//충돌 시 동작
@@ -31,7 +43,11 @@ public class ObstacleGenrate : MonoBehaviour {
 	
 		if(Obstacle.transform.name == "Angel01")
 		{
-			Time.timeScale = 0;
+			GameStatus.onGameOver();
+			GameStatus.offGameStart();
+			StopAllCoroutines();
+			CancelInvoke();
+			//Time.timeScale = 0;
 		}
 		else
 		{
@@ -76,16 +92,19 @@ public class ObstacleGenrate : MonoBehaviour {
 	//*************************
 	void fGenBuilding()
 	{
-		//건물 장애물 생성
-		genBuildingType = Random.Range(0, 3);
-		Instantiate(ObstacleBuilding[genBuildingType]);
-		if(genBuildingType == 2)
+		if(GameStatus.chkGameOver() == false)
 		{
-			GameStatus.plusCloudCnt();
-		}
-		else
-		{
-			GameStatus.plusBuildingCnt();
+			//건물 장애물 생성
+			genBuildingType = Random.Range(0, 3);
+			Instantiate(ObstacleBuilding[genBuildingType]);
+			if(genBuildingType == 2)
+			{
+				GameStatus.plusCloudCnt();
+			}
+			else
+			{
+				GameStatus.plusBuildingCnt();
+			}
 		}
 	}
 	
@@ -105,10 +124,13 @@ public class ObstacleGenrate : MonoBehaviour {
 	//*************************
 	void fGenEnemy()
 	{
-		//적 장애물 생성
-		genEnemyType = Random.Range(0, 3);
-		Instantiate(ObstacleEnemy[genEnemyType]);
-		GameStatus.plusEnemyCnt();
+		if(GameStatus.chkGameOver() == false)
+		{
+			//적 장애물 생성
+			genEnemyType = Random.Range(0, 3);
+			Instantiate(ObstacleEnemy[genEnemyType]);
+			GameStatus.plusEnemyCnt();
+		}
 	}
 	
 	//***********************

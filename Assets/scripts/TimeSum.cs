@@ -7,16 +7,27 @@ public class TimeSum : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		pointSec += Time.deltaTime;
-		
-		if(pointSec >= 0.1f)
+	
+		if(GameStatus.chkGameOver() == false)
 		{
-			sumTime += pointSec;
-			guiText.text = "Time : " + sumTime.ToString("#.0")
-							+ "\nEnemy : " + GameStatus.chkEnemyCnt()
-							+ "\nBuilding : " + GameStatus.chkBuildingCnt()
-							+ "\nCloud : " + GameStatus.chkCloudCnt();
-			pointSec = 0;
+			pointSec += Time.deltaTime;
+			
+			if(pointSec >= 0.1f)
+			{
+				sumTime += pointSec;
+				guiText.text = "Time : " + sumTime.ToString("#0.0")
+								+ "\nEnemy : " + GameStatus.chkEnemyCnt()
+								+ "\nBuilding : " + GameStatus.chkBuildingCnt()
+								+ "\nCloud : " + GameStatus.chkCloudCnt();
+				pointSec = 0;
+			}
 		}
+		else
+		{
+			sumTime = 0;
+		}
+		
+		
+		
 	}
 }
