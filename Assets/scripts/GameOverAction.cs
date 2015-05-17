@@ -5,7 +5,8 @@ public class GameOverAction : MonoBehaviour {
 	float ScrWidthRatio;
 	float ScrHeightRatio;
 	
-	public float btnPosX , btnPosY, btnHeight, btnWidth;
+	public float restartBtnPosX , restartBtnPosY, restartBtnHeight, restartBtnWidth;
+	public float shareBtnPosX , shareBtnPosY, shareBtnHeight, shareBtnWidth;
 	
 
 	// Use this for initialization
@@ -21,14 +22,24 @@ public class GameOverAction : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		if(GUI.Button (new Rect (btnPosX*10 * ScrWidthRatio, 
-		                         (72.0f-btnPosY)*10 * ScrHeightRatio, 
-								 btnWidth*10 * ScrWidthRatio, 
-								 btnHeight*10 * ScrHeightRatio), 
+		if(GUI.Button (new Rect (restartBtnPosX*10 * ScrWidthRatio, 
+		                         (72.0f-restartBtnPosY-restartBtnHeight)*10 * ScrHeightRatio, 
+		                         restartBtnWidth*10 * ScrWidthRatio, 
+		                         restartBtnHeight*10 * ScrHeightRatio), 
 								 "Restart")
 					  )
 		{
 			restartGame();
+		}
+		
+		if(GUI.Button (new Rect (shareBtnPosX*10 * ScrWidthRatio, 
+		                         (72.0f-shareBtnPosY-shareBtnHeight)*10 * ScrHeightRatio, 
+		                         shareBtnWidth*10 * ScrWidthRatio, 
+		                         shareBtnHeight*10 * ScrHeightRatio), 
+		               "Share")
+		   )
+		{
+			//sharecode
 		}
 	}
 	
