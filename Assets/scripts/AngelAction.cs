@@ -8,8 +8,7 @@ public class AngelAction : MonoBehaviour {
 	//float ScrHeightRatio;
 	bool dmgTaken = false;
 	float dmgTime = 0;
-
-	
+	Animator animator;
 	void init()
 	{
 		transform.position = new Vector2(41.2f, 31.0f);
@@ -21,6 +20,8 @@ public class AngelAction : MonoBehaviour {
 		//this.ScrHeightRatio = Screen.height/720.0f;
 		
 		//초기설정
+		animator = gameObject.GetComponent <Animator>();
+		animator.SetBool("isCrying",false);
 		init ();
 		
 	}
@@ -31,6 +32,7 @@ public class AngelAction : MonoBehaviour {
 		if(GameStatus.chkGameOver() == false &&
 		   GameStatus.chkGameStart() == true)
 		{
+			animator.SetBool("isCrying",false);
 			if(Input.GetKey(KeyCode.UpArrow))
 			{
 				if(rigidbody2D.velocity.y < 0)
@@ -61,6 +63,7 @@ public class AngelAction : MonoBehaviour {
 		}
 		else if(GameStatus.chkGameOver() == true)
 		{
+			animator.SetBool("isCrying",true);
 			rigidbody2D.gravityScale = 0;
 			
 			if(GameStatus.chkGameStart() == false)
