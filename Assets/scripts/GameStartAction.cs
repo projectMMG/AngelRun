@@ -2,11 +2,17 @@
 using System.Collections;
 
 public class GameStartAction : MonoBehaviour {
+	public float titleboxX, titleboxY;
 
+	void init()
+	{
+		titleboxPosSet();
+	}
+	
 	
 	// Use this for initialization
 	void Start () {
-	
+		init ();
 	}
 	
 	// Update is called once per frame
@@ -19,5 +25,10 @@ public class GameStartAction : MonoBehaviour {
 			this.gameObject.SetActive(false);
 		}
 		
+	}
+	
+	void titleboxPosSet()
+	{
+		transform.position = new Vector2(titleboxX/127, titleboxY/72);
 	}
 }
