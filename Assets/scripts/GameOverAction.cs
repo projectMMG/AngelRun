@@ -4,9 +4,11 @@ using System.Collections;
 public class GameOverAction : MonoBehaviour {
 	float ScrWidthRatio;
 	float ScrHeightRatio;
+	float tempScore;
 	
 	public float restartBtnPosX , restartBtnPosY, restartBtnHeight, restartBtnWidth;
 	public float shareBtnPosX , shareBtnPosY, shareBtnHeight, shareBtnWidth;
+	public float scoreBoxPosX, scoreBoxPosY;
 	
 
 	// Use this for initialization
@@ -14,6 +16,13 @@ public class GameOverAction : MonoBehaviour {
 		this.ScrWidthRatio = Screen.width/1280.0f;
 		this.ScrHeightRatio = Screen.height/720.0f;
 		
+	}
+	
+	void OnEnable()
+	{
+		tempScore = GameStatus.chkPreScore();
+		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
+		transform.position = new Vector2(scoreBoxPosX/127, scoreBoxPosY/72);
 	}
 	
 	// Update is called once per frame
@@ -46,6 +55,7 @@ public class GameOverAction : MonoBehaviour {
 	void restartGame()
 	{
 		GameStatus.onGameStart();
+		GameStatus.onGameOver();
 		GameObject gameStartSetup = GameObject.Find("03_SystemUI");
 		gameStartSetup.transform.FindChild("gameStartSet").gameObject.SetActive(true);
 		gameObject.SetActive(false);

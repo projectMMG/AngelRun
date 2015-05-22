@@ -9,8 +9,10 @@ public class AngelAction : MonoBehaviour {
 	bool dmgTaken = false;
 	float dmgTime = 0;
 	Animator animator;
+	
 	void init()
 	{
+		animator.SetBool("isCrying",false);
 		transform.position = new Vector2(41.2f, 31.0f);
 	}
 	
@@ -21,7 +23,6 @@ public class AngelAction : MonoBehaviour {
 		
 		//초기설정
 		animator = gameObject.GetComponent <Animator>();
-		animator.SetBool("isCrying",false);
 		init ();
 		
 	}
@@ -63,11 +64,16 @@ public class AngelAction : MonoBehaviour {
 		}
 		else if(GameStatus.chkGameOver() == true)
 		{
-			animator.SetBool("isCrying",true);
 			rigidbody2D.gravityScale = 0;
+			if(GameStatus.chkGameOver() == true)
+			{
+				animator.SetBool("isCrying",false);
+			}
 			
 			if(GameStatus.chkGameStart() == false)
 			{
+				animator.SetBool("isCrying",true);
+				
 				if(transform.position.x < 41.2f)
 				{
 					rigidbody2D.velocity = new Vector2(40,0);

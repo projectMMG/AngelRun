@@ -24,6 +24,11 @@ public class TimeSum : MonoBehaviour {
 		}
 		else
 		{
+			if(sumTime != 0)
+			{
+				int tempScore = (int)(sumTime * 100);
+				GameStatus.bufInPreScore(tempScore);
+			}
 			sumTime = 0;
 		}
 		

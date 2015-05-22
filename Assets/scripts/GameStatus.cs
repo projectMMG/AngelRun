@@ -9,6 +9,8 @@ public static class GameStatus{
 	static int cntEnemy = 0;
 	static int cntBuilding = 0;
 	
+	static int preScore = 0;
+	
 	//게임오버/스타트 멤버함수
 	public static bool chkGameOver()
 	{
@@ -132,5 +134,16 @@ public static class GameStatus{
 		cntBuilding--;
 	}
 	//오브젝트카운트 멤버함수
+	
+	//스코어 멤버함수
+	public static int chkPreScore()
+	{
+		return preScore;
+	}
+	
+	public static void bufInPreScore(int tempScore)
+	{
+		preScore = tempScore;
+	}
 
 }
