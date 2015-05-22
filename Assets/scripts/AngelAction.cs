@@ -69,6 +69,7 @@ public class AngelAction : MonoBehaviour {
 			rigidbody2D.gravityScale = 0;
 			if(GameStatus.chkGameOver() == true)
 			{
+				dmgTaken = false;
 				animator.SetBool("isCrying",false);
 			}
 			
