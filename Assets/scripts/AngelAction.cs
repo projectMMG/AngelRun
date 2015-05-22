@@ -34,6 +34,7 @@ public class AngelAction : MonoBehaviour {
 		   GameStatus.chkGameStart() == true)
 		{
 			animator.SetBool("isCrying",false);
+			
 			if(Input.GetKey(KeyCode.UpArrow))
 			{
 				if(rigidbody2D.velocity.y < 0)
