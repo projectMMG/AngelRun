@@ -34,6 +34,7 @@ public class AngelAction : MonoBehaviour {
 		   GameStatus.chkGameStart() == true)
 		{
 			animator.SetBool("isCrying",false);
+
 			//inputPC();
 			inputPhone();
 			velotest = rigidbody2D.velocity.y;
