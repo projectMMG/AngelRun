@@ -51,9 +51,11 @@ public class AngelAction : MonoBehaviour {
 			//Damage Check
 			if(dmgTaken == true)
 			{
+				animator.SetBool("isFall",true);
 				if(dmgTime >= 1.0f)
 				{
 					dmgTaken = false;
+					animator.SetBool("isFall",false);
 					dmgTime = 0.0f;
 				}
 				else
@@ -72,6 +74,7 @@ public class AngelAction : MonoBehaviour {
 			
 			if(GameStatus.chkGameStart() == false)
 			{
+				animator.SetBool("isFall",false);
 				animator.SetBool("isCrying",true);
 				
 				if(transform.position.x < 41.2f)
