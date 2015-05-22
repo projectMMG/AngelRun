@@ -34,18 +34,8 @@ public class AngelAction : MonoBehaviour {
 		   GameStatus.chkGameStart() == true)
 		{
 			animator.SetBool("isCrying",false);
-			if(Input.GetKey(KeyCode.UpArrow))
-			{
-				if(rigidbody2D.velocity.y < 0)
-				{
-					velocityStop();
-				}
-				rigidbody2D.gravityScale = -angelGravity;
-			}
-			else
-			{
-				rigidbody2D.gravityScale = angelGravity;
-			}
+			//inputPC();
+			inputPhone();
 			velotest = rigidbody2D.velocity.y;
 			
 			//Damage Check
@@ -54,8 +44,8 @@ public class AngelAction : MonoBehaviour {
 				animator.SetBool("isFall",true);
 				if(dmgTime >= 1.0f)
 				{
-					dmgTaken = false;
 					animator.SetBool("isFall",false);
+					dmgTaken = false;
 					dmgTime = 0.0f;
 				}
 				else
@@ -67,9 +57,10 @@ public class AngelAction : MonoBehaviour {
 		else if(GameStatus.chkGameOver() == true)
 		{
 			rigidbody2D.gravityScale = 0;
-			if(GameStatus.chkGameOver() == true)
+			if(GameStatus.chkGameStart() == true)
 			{
 				animator.SetBool("isCrying",false);
+				dmgTaken = false;
 			}
 			
 			if(GameStatus.chkGameStart() == false)
@@ -120,5 +111,46 @@ public class AngelAction : MonoBehaviour {
 	void velocityStop(){
 		rigidbody2D.velocity = new Vector2(0,0);
 	}
+	
+	void inputPC()
+	{
+		if(Input.GetKey(KeyCode.UpArrow))
+		{
+			if(rigidbody2D.velocity.y < 0)
+			{
+				velocityStop();
+			}
+			rigidbody2D.gravityScale = -angelGravity;
+		}
+		else
+		{
+			rigidbody2D.gravityScale = angelGravity;
+		}
+	}
+	
+	void inputPhone()
+	{
+		int cnt = Input.touchCount;
+		
+		for(int i = 0;i<cnt;++i)
+		{
+			Touch touch = Input.GetTouch(i);
+			
+			if(touch.phase == TouchPhase.Stationary)
+			{
+				if(rigidbody2D.velocity.y < 0)
+				{
+					velocityStop();
+				}
+				rigidbody2D.gravityScale = -angelGravity;
+			}
+			else
+			{
+				rigidbody2D.gravityScale = angelGravity;
+			}
+		}
+	}
+	
+	
 }
 

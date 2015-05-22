@@ -17,12 +17,20 @@ public class GameStartAction : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.UpArrow))
+		int cnt = Input.touchCount;
+		
+		for(int i = 0;i<cnt;++i)
 		{
-			GameStatus.offGameOver();
-			GameObject startCall = GameObject.Find("01_GameObj");
-			startCall.transform.FindChild("Obstacle").gameObject.SetActive(true);
-			this.gameObject.SetActive(false);
+			Touch touch = Input.GetTouch(i);
+			
+			if(touch.phase == TouchPhase.Ended)
+			//if(Input.GetKey(KeyCode.UpArrow))
+			{
+				GameStatus.offGameOver();
+				GameObject startCall = GameObject.Find("01_GameObj");
+				startCall.transform.FindChild("Obstacle").gameObject.SetActive(true);
+				this.gameObject.SetActive(false);
+			}
 		}
 		
 	}
