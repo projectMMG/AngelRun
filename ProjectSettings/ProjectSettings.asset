@@ -73,7 +73,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.projectMMG.AngelRun
+  iPhoneBundleIdentifier: com.TeamMMG.AngelRun
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 3621ff99bb59b1b43adf965e8536720d

@@ -11,6 +11,7 @@ public class GameOverAction : MonoBehaviour {
 	public float scoreBoxPosX, scoreBoxPosY;
 	
 	public Texture restartBtn, shareBtn;
+	public GameObject adMob;
 
 	// Use this for initialization
 	void init () {
@@ -26,6 +27,7 @@ public class GameOverAction : MonoBehaviour {
 		guiText.fontSize = (int)(guiText.fontSize * ScrHeightRatio);
 		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
 		transform.position = new Vector2(scoreBoxPosX/127, scoreBoxPosY/72);
+		adMob.SendMessage("Load");
 	}
 	
 	// Update is called once per frame
@@ -34,6 +36,7 @@ public class GameOverAction : MonoBehaviour {
 	
 	void OnGUI()
 	{
+		adMob.SendMessage("Hide");
 		if(GUI.Button (new Rect (restartBtnPosX*10 * ScrWidthRatio,
 		                         (72.0f-restartBtnPosY-restartBtnHeight)*10 * ScrHeightRatio, 
 		                         restartBtn.width * ScrWidthRatio, 
