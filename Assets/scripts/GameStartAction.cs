@@ -17,20 +17,31 @@ public class GameStartAction : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		int cnt = Input.touchCount;
 		
-		for(int i = 0;i<cnt;++i)
+		if(Application.platform == RuntimePlatform.Android)
 		{
-			Touch touch = Input.GetTouch(i);
+			int cnt = Input.touchCount;
 			
-			if(touch.phase == TouchPhase.Ended)
-			//if(Input.GetKey(KeyCode.UpArrow))
+			for(int i = 0;i<cnt;++i)
 			{
-				GameStatus.offGameOver();
-				GameObject startCall = GameObject.Find("01_GameObj");
-				startCall.transform.FindChild("Obstacle").gameObject.SetActive(true);
-				this.gameObject.SetActive(false);
+				Touch touch = Input.GetTouch(i);
+				
+				if(touch.phase == TouchPhase.Began)
+				{
+					GameStatus.offGameOver();
+					GameObject startCall = GameObject.Find("01_GameObj");
+					startCall.transform.FindChild("Obstacle").gameObject.SetActive(true);
+					this.gameObject.SetActive(false);
+				}
 			}
+		}
+		
+		if(Input.GetKey(KeyCode.UpArrow))
+		{
+			GameStatus.offGameOver();
+			GameObject startCall = GameObject.Find("01_GameObj");
+			startCall.transform.FindChild("Obstacle").gameObject.SetActive(true);
+			this.gameObject.SetActive(false);
 		}
 		
 	}
@@ -38,5 +49,6 @@ public class GameStartAction : MonoBehaviour {
 	void titleboxPosSet()
 	{
 		transform.position = new Vector2(titleboxX/127, titleboxY/72);
+		guiText.fontSize = (int)(guiText.fontSize * (Screen.height/720.0f));
 	}
 }

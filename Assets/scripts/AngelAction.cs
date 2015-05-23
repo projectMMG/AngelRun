@@ -35,8 +35,11 @@ public class AngelAction : MonoBehaviour {
 		{
 			animator.SetBool("isCrying",false);
 
-			//inputPC();
-			inputPhone();
+			inputPC();
+			if(Application.platform == RuntimePlatform.Android)
+			{
+				inputPhone();
+			}
 			velotest = rigidbody2D.velocity.y;
 			
 			//Damage Check

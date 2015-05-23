@@ -22,12 +22,13 @@ public class GameOverAction : MonoBehaviour {
 	{
 		tempScore = GameStatus.chkPreScore();
 		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
+		guiText.fontSize = (int)(guiText.fontSize * ScrHeightRatio);
 		transform.position = new Vector2(scoreBoxPosX/127, scoreBoxPosY/72);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	}
+	//void Update () {
+	//}
 	
 	void OnGUI()
 	{
