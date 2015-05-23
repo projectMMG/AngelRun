@@ -283,7 +283,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 723167209}
   - 114: {fileID: 723167210}
-  - 132: {fileID: 723167211}
   m_Layer: 0
   m_Name: gameStartSet
   m_TagString: Untagged
@@ -313,31 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ae2164c8145a2459ae899b4021d808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleboxX: 37
-  titleboxY: 50
---- !u!132 &723167211
-GUIText:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 723167208}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Text: ANGEL RUN
-  m_Anchor: 6
-  m_Alignment: 0
-  m_PixelOffset: {x: 0, y: 0}
-  m_LineSpacing: 1
-  m_TabSize: 4
-  m_Font: {fileID: 12800000, guid: 18d4e54ffd3481c409cdd28338ed2f62, type: 3}
-  m_Material: {fileID: 0}
-  m_FontSize: 87
-  m_FontStyle: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_PixelCorrect: 1
-  m_RichText: 1
 --- !u!1 &959347805
 GameObject:
   m_ObjectHideFlags: 0

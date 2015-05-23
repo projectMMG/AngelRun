@@ -2,11 +2,10 @@
 using System.Collections;
 
 public class GameStartAction : MonoBehaviour {
-	public float titleboxX, titleboxY;
 
 	void init()
 	{
-		titleboxPosSet();
+		
 	}
 	
 	
@@ -44,11 +43,5 @@ public class GameStartAction : MonoBehaviour {
 			this.gameObject.SetActive(false);
 		}
 		
-	}
-	
-	void titleboxPosSet()
-	{
-		transform.position = new Vector2(titleboxX/127, titleboxY/72);
-		guiText.fontSize = (int)(guiText.fontSize * (Screen.height/720.0f));
 	}
 }
