@@ -115,15 +115,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartBtnPosX: 70
-  restartBtnPosY: 40
+  restartBtnPosY: 30
   restartBtnHeight: 10
   restartBtnWidth: 30
   shareBtnPosX: 70
-  shareBtnPosY: 25
+  shareBtnPosY: 15
   shareBtnHeight: 10
   shareBtnWidth: 30
-  scoreBoxPosX: 28
-  scoreBoxPosY: 40
+  scoreBoxPosX: 20
+  scoreBoxPosY: 50
 --- !u!132 &269272710
 GUIText:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: 18d4e54ffd3481c409cdd28338ed2f62, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 10
+  m_FontSize: 80
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -318,8 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ae2164c8145a2459ae899b4021d808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleboxX: 55
-  titleboxY: 40
+  titleboxX: 37
+  titleboxY: 50
 --- !u!132 &723167211
 GUIText:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ GUIText:
   m_GameObject: {fileID: 723167208}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: angelrun
+  m_Text: ANGEL RUN
   m_Anchor: 6
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
@@ -336,7 +336,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: 18d4e54ffd3481c409cdd28338ed2f62, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 10
+  m_FontSize: 87
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
