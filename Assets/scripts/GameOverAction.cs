@@ -13,7 +13,7 @@ public class GameOverAction : MonoBehaviour {
 	public Texture restartBtn, shareBtn;
 
 	// Use this for initialization
-	void Start () {
+	void init () {
 		this.ScrWidthRatio = Screen.width/1280.0f;
 		this.ScrHeightRatio = Screen.height/720.0f;
 		
@@ -21,9 +21,10 @@ public class GameOverAction : MonoBehaviour {
 	
 	void OnEnable()
 	{
+		init ();
 		tempScore = GameStatus.chkPreScore();
-		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
 		guiText.fontSize = (int)(guiText.fontSize * ScrHeightRatio);
+		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
 		transform.position = new Vector2(scoreBoxPosX/127, scoreBoxPosY/72);
 	}
 	
