@@ -9,7 +9,7 @@ public class GameOverAction : MonoBehaviour {
 	public float restartBtnPosX , restartBtnPosY, restartBtnHeight, restartBtnWidth;
 	public float shareBtnPosX , shareBtnPosY, shareBtnHeight, shareBtnWidth;
 	public float scoreBoxPosX, scoreBoxPosY;
-	
+	public GameObject adMob;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +23,7 @@ public class GameOverAction : MonoBehaviour {
 		tempScore = GameStatus.chkPreScore();
 		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
 		transform.position = new Vector2(scoreBoxPosX/127, scoreBoxPosY/72);
+		adMob.SendMessage("Load");
 	}
 	
 	// Update is called once per frame
@@ -31,6 +32,7 @@ public class GameOverAction : MonoBehaviour {
 	
 	void OnGUI()
 	{
+		adMob.SendMessage("Hide");
 		if(GUI.Button (new Rect (restartBtnPosX*10 * ScrWidthRatio, 
 		                         (72.0f-restartBtnPosY-restartBtnHeight)*10 * ScrHeightRatio, 
 		                         restartBtnWidth*10 * ScrWidthRatio, 
