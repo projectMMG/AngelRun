@@ -125,7 +125,7 @@ MonoBehaviour:
   scoreBoxPosY: 50
   restartBtn: {fileID: 2800000, guid: 2cc75fe4fef6d8345b90518900bcae23, type: 3}
   shareBtn: {fileID: 2800000, guid: 3691fcecf599fc84aa9fc8c8daf43433, type: 3}
-  adMob: {fileID: 0}
+  adMob: {fileID: 1701018650}
 --- !u!132 &269272710
 GUIText:
   m_ObjectHideFlags: 0
@@ -632,7 +632,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 8e3676865462d674e9eba99e8724cada, type: 2}
       propertyPath: publisherId
-      value: pub-8735330588324391
+      value: ca-app-pub-8735330588324391/7531791866
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8e3676865462d674e9eba99e8724cada, type: 2}
+      propertyPath: isTesting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8e3676865462d674e9eba99e8724cada, type: 2}
+      propertyPath: loadOnStart
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e3676865462d674e9eba99e8724cada, type: 2}
@@ -1007,7 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdf14effc102404ab6a46bc6a50a821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  publisherId: pub-8735330588324391
+  publisherId: ca-app-pub-8735330588324391/7531791866
   isTesting: 0
   testDeviceIds:
   - TEST_DEVICE_ID

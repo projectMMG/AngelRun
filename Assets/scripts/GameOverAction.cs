@@ -28,7 +28,9 @@ public class GameOverAction : MonoBehaviour {
 		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
 		transform.position = new Vector2(scoreBoxPosX/127, scoreBoxPosY/72);
 		adMob.SendMessage("Load");
+		adMob.SendMessage("Show");
 	}
+	
 	
 	// Update is called once per frame
 	//void Update () {
@@ -36,7 +38,6 @@ public class GameOverAction : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		adMob.SendMessage("Hide");
 		if(GUI.Button (new Rect (restartBtnPosX*10 * ScrWidthRatio,
 		                         (72.0f-restartBtnPosY-restartBtnHeight)*10 * ScrHeightRatio, 
 		                         restartBtn.width * ScrWidthRatio, 
@@ -65,5 +66,6 @@ public class GameOverAction : MonoBehaviour {
 		GameObject gameStartSetup = GameObject.Find("03_SystemUI");
 		gameStartSetup.transform.FindChild("gameStartSet").gameObject.SetActive(true);
 		gameObject.SetActive(false);
+		adMob.SendMessage("Hide");
 	}
 }

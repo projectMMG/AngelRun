@@ -47,6 +47,7 @@ public class AdMobPlugin : MonoBehaviour{
 		if(this.loadOnStart){
 
 			this.Load();
+			this.Hide();
 		}
 
 		if(this.setTargetOnStart){
@@ -221,7 +222,7 @@ public class AdMobPlugin : MonoBehaviour{
 
 				yield return new WaitForSeconds(this.refreshInterval < 30 ? 30 : this.refreshInterval);
 
-				this.Load();
+				//this.Load();
 			}
 		}
 	}
