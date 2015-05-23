@@ -124,6 +124,8 @@ MonoBehaviour:
   shareBtnWidth: 30
   scoreBoxPosX: 20
   scoreBoxPosY: 50
+  restartBtn: {fileID: 2800000, guid: 2cc75fe4fef6d8345b90518900bcae23, type: 3}
+  shareBtn: {fileID: 2800000, guid: 3691fcecf599fc84aa9fc8c8daf43433, type: 3}
 --- !u!132 &269272710
 GUIText:
   m_ObjectHideFlags: 0
