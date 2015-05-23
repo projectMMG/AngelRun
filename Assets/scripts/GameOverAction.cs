@@ -17,14 +17,18 @@ public class GameOverAction : MonoBehaviour {
 	void init () {
 		this.ScrWidthRatio = Screen.width/1280.0f;
 		this.ScrHeightRatio = Screen.height/720.0f;
+		guiText.fontSize = (int)(guiText.fontSize * ScrHeightRatio);
 		
+	}
+	
+	void Start()
+	{
+		init ();
 	}
 	
 	void OnEnable()
 	{
-		init ();
 		tempScore = GameStatus.chkPreScore();
-		guiText.fontSize = (int)(guiText.fontSize * ScrHeightRatio);
 		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
 		transform.position = new Vector2(scoreBoxPosX/127, scoreBoxPosY/72);
 		adMob.SendMessage("Load");
