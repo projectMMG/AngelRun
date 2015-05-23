@@ -149,6 +149,14 @@ public class AngelAction : MonoBehaviour {
 				}
 				rigidbody2D.gravityScale = -angelGravity;
 			}
+			else if(touch.phase == TouchPhase.Began)
+			{
+				if(rigidbody2D.velocity.y < 0)
+				{
+					velocityStop();
+				}
+				rigidbody2D.gravityScale = -angelGravity;
+			}
 			else
 			{
 				rigidbody2D.gravityScale = angelGravity;
