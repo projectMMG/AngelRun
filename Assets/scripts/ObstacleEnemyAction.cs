@@ -12,7 +12,7 @@ public class ObstacleEnemyAction : MonoBehaviour {
 		testY = Random.Range(7.0f,60.0f);
 		//testSpeed = Random.Range(10.0f,100.0f);
 		transform.position = new Vector2(128.0f,testY);
-		rigidbody2D.velocity = new Vector2(-scrlSpeed,0);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(-scrlSpeed,0);
 	
 	}
 	

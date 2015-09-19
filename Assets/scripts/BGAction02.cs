@@ -7,7 +7,7 @@ public class BGAction02 : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		rigidbody2D.velocity = new Vector2(-scrlSpeed,0);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(-scrlSpeed,0);
 		
 	}
 	

@@ -17,7 +17,7 @@ public class GameOverAction : MonoBehaviour {
 	void init () {
 		this.ScrWidthRatio = Screen.width/1280.0f;
 		this.ScrHeightRatio = Screen.height/720.0f;
-		guiText.fontSize = (int)(guiText.fontSize * ScrHeightRatio);
+		GetComponent<GUIText>().fontSize = (int)(GetComponent<GUIText>().fontSize * ScrHeightRatio);
 		
 	}
 	
@@ -29,7 +29,7 @@ public class GameOverAction : MonoBehaviour {
 	void OnEnable()
 	{
 		tempScore = GameStatus.chkPreScore();
-		guiText.text = "Score : " + tempScore.ToString("#,##0") + "m";
+		GetComponent<GUIText>().text = "Score : " + tempScore.ToString("#,##0") + "m";
 		transform.position = new Vector2(scoreBoxPosX/127, scoreBoxPosY/72);
 		adMob.SendMessage("Load");
 		adMob.SendMessage("Show");

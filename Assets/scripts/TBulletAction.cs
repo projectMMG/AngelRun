@@ -19,7 +19,7 @@ public class TBulletAction : MonoBehaviour {
 		//화면 벗어나면 제거
 		if(transform.position.y >= 72.0f)
 		{
-			rigidbody2D.velocity = new Vector2(0, 0);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 			transform.position = new Vector2(-10.0f,36.0f);
 		}
 	}
@@ -41,7 +41,7 @@ public class TBulletAction : MonoBehaviour {
 		float XSpd = XDiffer / distance * scrlSpd;
 		float YSpd = YDiffer / distance * scrlSpd;
 		
-		rigidbody2D.velocity = new Vector2(-XSpd,YSpd);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(-XSpd,YSpd);
 	}
 	
 	

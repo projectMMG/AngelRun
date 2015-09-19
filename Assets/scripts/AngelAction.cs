@@ -40,7 +40,7 @@ public class AngelAction : MonoBehaviour {
 			{
 				inputPhone();
 			}
-			velotest = rigidbody2D.velocity.y;
+			velotest = GetComponent<Rigidbody2D>().velocity.y;
 			
 			//Damage Check
 			if(dmgTaken == true)
@@ -60,7 +60,7 @@ public class AngelAction : MonoBehaviour {
 		}
 		else if(GameStatus.chkGameOver() == true)
 		{
-			rigidbody2D.gravityScale = 0;
+			GetComponent<Rigidbody2D>().gravityScale = 0;
 			if(GameStatus.chkGameStart() == true)
 			{
 				dmgTaken = false;
@@ -75,7 +75,7 @@ public class AngelAction : MonoBehaviour {
 				
 				if(transform.position.x < 41.2f)
 				{
-					rigidbody2D.velocity = new Vector2(40,0);
+					GetComponent<Rigidbody2D>().velocity = new Vector2(40,0);
 				}
 				else
 				{
@@ -114,22 +114,22 @@ public class AngelAction : MonoBehaviour {
 	}
 	
 	void velocityStop(){
-		rigidbody2D.velocity = new Vector2(0,0);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 	}
 	
 	void inputPC()
 	{
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
-			if(rigidbody2D.velocity.y < 0)
+			if(GetComponent<Rigidbody2D>().velocity.y < 0)
 			{
 				velocityStop();
 			}
-			rigidbody2D.gravityScale = -angelGravity;
+			GetComponent<Rigidbody2D>().gravityScale = -angelGravity;
 		}
 		else
 		{
-			rigidbody2D.gravityScale = angelGravity;
+			GetComponent<Rigidbody2D>().gravityScale = angelGravity;
 		}
 	}
 	
@@ -143,23 +143,23 @@ public class AngelAction : MonoBehaviour {
 			
 			if(touch.phase == TouchPhase.Stationary)
 			{
-				if(rigidbody2D.velocity.y < 0)
+				if(GetComponent<Rigidbody2D>().velocity.y < 0)
 				{
 					velocityStop();
 				}
-				rigidbody2D.gravityScale = -angelGravity;
+				GetComponent<Rigidbody2D>().gravityScale = -angelGravity;
 			}
 			else if(touch.phase == TouchPhase.Began)
 			{
-				if(rigidbody2D.velocity.y < 0)
+				if(GetComponent<Rigidbody2D>().velocity.y < 0)
 				{
 					velocityStop();
 				}
-				rigidbody2D.gravityScale = -angelGravity;
+				GetComponent<Rigidbody2D>().gravityScale = -angelGravity;
 			}
 			else
 			{
-				rigidbody2D.gravityScale = angelGravity;
+				GetComponent<Rigidbody2D>().gravityScale = angelGravity;
 			}
 		}
 	}

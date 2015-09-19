@@ -23,6 +23,6 @@ public class MissileAction : MonoBehaviour {
 	
 	public void lunchMissile()
 	{
-		rigidbody2D.velocity = new Vector2(-scrlSpeed,0);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(-scrlSpeed,0);
 	}
 }

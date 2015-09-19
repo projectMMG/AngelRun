@@ -18,7 +18,7 @@ public class HelicopAction : MonoBehaviour {
 		angel = GameObject.Find("Angel01");
 		//randPos = Random.Range(posMin, posMax); //randPos = Random.Range(5.1f, 46.0f);
 		transform.position = new Vector2(128.0f,5.1f);
-		rigidbody2D.velocity = new Vector2(-scrlSpd,0);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(-scrlSpd,0);
 	}
 	
 	void Update () {
@@ -32,20 +32,20 @@ public class HelicopAction : MonoBehaviour {
 		//upChkPoint 도달시 전진 멈추고 상승
 		if(upChk == false && transform.position.x <= upChkPoint)
 		{
-			rigidbody2D.velocity = new Vector2(0, upSpd);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0, upSpd);
 			upChk = true;
 		}
 		
 		//upLimit 도달시 상승 멈추고 퇴장
 		if(upChk == true && transform.position.y >= upLimit)
 		{
-			rigidbody2D.velocity = new Vector2(scrlSpd, 0);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(scrlSpd, 0);
 		}
 		
 		//화면밖으로 나가면 제거
 		if(upChk == true && transform.position.x >= 128.0f)
 		{
-			rigidbody2D.velocity = new Vector2(0, 0);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 			transform.position = new Vector2(-10.0f,36.0f);
 		}
 		

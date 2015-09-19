@@ -16,7 +16,7 @@ public class PlaneAction : MonoBehaviour {
 		angel = GameObject.Find("Angel01");
 		randPos = Random.Range(posMin, posMax); //randPos = Random.Range(5.1f, 46.0f);
 		transform.position = new Vector2(128.0f,randPos);
-		rigidbody2D.velocity = new Vector2(-scrlSpd,0);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(-scrlSpd,0);
 	}
 	
 	void Update () {
@@ -33,11 +33,11 @@ public class PlaneAction : MonoBehaviour {
 		{			
 			if(angel.transform.position.y > transform.position.y)
 			{
-				rigidbody2D.velocity = new Vector2(-scrlSpd, upDownSpd);
+				GetComponent<Rigidbody2D>().velocity = new Vector2(-scrlSpd, upDownSpd);
 			}
 			else
 			{
-				rigidbody2D.velocity = new Vector2(-scrlSpd, -upDownSpd);
+				GetComponent<Rigidbody2D>().velocity = new Vector2(-scrlSpd, -upDownSpd);
 			}
 			upDownChk = true;
 		}
@@ -45,7 +45,7 @@ public class PlaneAction : MonoBehaviour {
 		//상승하강 제한
 		if(upDownChk == true && (transform.position.y <= downLimit || transform.position.y >= 59.0f))
 		{
-			rigidbody2D.velocity = new Vector2(-scrlSpd,0);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(-scrlSpd,0);
 		}
 	}
 }
