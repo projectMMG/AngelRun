@@ -9,6 +9,7 @@ public class GameOverAction : MonoBehaviour {
 	public float restartBtnPosX , restartBtnPosY, restartBtnHeight, restartBtnWidth;
 	public float shareBtnPosX , shareBtnPosY, shareBtnHeight, shareBtnWidth;
 	public float scoreBoxPosX, scoreBoxPosY;
+    public float scoreFontSize;
 	
 	public Texture restartBtn, shareBtn;
 	public GameObject adMob;
@@ -17,7 +18,7 @@ public class GameOverAction : MonoBehaviour {
 	void init () {
 		this.ScrWidthRatio = Screen.width/1280.0f;
 		this.ScrHeightRatio = Screen.height/720.0f;
-		GetComponent<GUIText>().fontSize = (int)(GetComponent<GUIText>().fontSize * ScrHeightRatio);
+		GetComponent<GUIText>().fontSize = (int)(scoreFontSize * ScrHeightRatio);
 		
 	}
 	
@@ -36,9 +37,6 @@ public class GameOverAction : MonoBehaviour {
 	}
 	
 	
-	// Update is called once per frame
-	//void Update () {
-	//}
 	
 	void OnGUI()
 	{
